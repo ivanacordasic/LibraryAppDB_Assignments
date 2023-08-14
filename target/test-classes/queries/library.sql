@@ -8,3 +8,5 @@ select name from book_categories;
 select * from users;
 
 select count(*) from book_borrow where is_returned = 0;
+
+select * from books where name like 'rich dad poor dad';

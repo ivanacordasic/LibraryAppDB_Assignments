@@ -1,11 +1,14 @@
 package com.library.pages;
 
+import com.library.utility.BrowserUtil;
 import com.library.utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BookPage extends BasePage {
 
@@ -60,6 +63,20 @@ public class BookPage extends BasePage {
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
 
+    public Map<String , String> editBookInfo (){
+
+        Map<String, String> editBookInfo = new HashMap<>();
+
+        BrowserUtil.waitForVisibility(bookName, 3);
+        editBookInfo.put("name", bookName.getAttribute("value"));
+        editBookInfo.put("isbn", isbn.getAttribute("value"));
+        editBookInfo.put("year", year.getAttribute("value"));
+        editBookInfo.put("author", author.getAttribute("value"));
+        editBookInfo.put("book_category_id", categoryDropdown.getAttribute("value"));
+        editBookInfo.put("description", description.getAttribute("value"));
+        return editBookInfo;
+
+    }
 
 
 }
