@@ -1,6 +1,5 @@
 package com.library.steps;
 
-import com.library.pages.BasePage;
 import com.library.pages.BookPage;
 import com.library.pages.LoginPage;
 import com.library.utility.BrowserUtil;
@@ -8,12 +7,10 @@ import com.library.utility.DB_Util;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.eo.Se;
-import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
-import java.sql.ResultSet;
+import org.junit.Assert;
+
+
 import java.util.List;
 
 public class us03_stepDefs {

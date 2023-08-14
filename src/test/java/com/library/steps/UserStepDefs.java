@@ -4,11 +4,13 @@ import com.library.utility.DB_Util;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 
+import java.util.List;
 
 
 public class UserStepDefs {
 
     String actualUserCount;
+    List<String> expectedColumnNames;
 
     @Given("Establish the database connection")
     public void establish_the_database_connection() {
@@ -37,5 +39,19 @@ public class UserStepDefs {
       //  DB_Util.destroy();
         System.out.println("---- CONNECTION WILL BE CLOSED WITH AFTER HOOK ----");
     }
+
+
+    @When("Execute query to get all columns")
+    public void execute_query_to_get_all_columns() {
+        String query = "select * from users";
+        DB_Util.runQuery(query);
+        expectedColumnNames = DB_Util.getAllColumnNamesAsList();
+    }
+    @Then("verify the below columns are listed in result")
+    public void verify_the_below_columns_are_listed_in_result(io.cucumber.datatable.DataTable dataTable) {
+        List<String> actualColumnNames = dataTable.asList();
+        Assert.assertEquals(expectedColumnNames, actualColumnNames);
+    }
+
 
 }
